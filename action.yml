@@ -13,5 +13,7 @@ runs:
   steps:
     # Run the action
     - name: Setup Flutter Version Management CLI
-      run: $GITHUB_ACTION_PATH/action.sh ${{ inputs.version }}
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: $GITHUB_ACTION_PATH/action.sh ${{ inputs.version }}
