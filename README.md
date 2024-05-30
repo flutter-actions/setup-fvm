@@ -1,3 +1,6 @@
+[GitHub Action]: https://github.com/flutter-actions/setup-fvm
+[MIT License]: https://github.com/flutter-actions/setup-fvm/blob/main/LICENSE
+
 # About
 
 > [!WARNING]
