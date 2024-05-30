@@ -1,4 +1,8 @@
 # About
+
+> [!WARNING]
+> Currently, the action only supports Linux and macOS runners.
+
 Setup Flutter Version Management: A simple CLI to manage Flutter SDK versions.  
 https://github.com/leoafarias/fvm
 
