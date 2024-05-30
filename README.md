@@ -42,7 +42,7 @@ jobs:
         run: fvm flutter --version
 ```
 
-> [!WARNING]
+> [!IMPORTANT]
 > Do not use both `flutter-actions/setup-flutter` and `flutter-actions/setup-fvm` in the same workflow. It provides the same functionality, so just pick one.
 
 # License
