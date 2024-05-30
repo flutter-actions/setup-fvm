@@ -1,0 +1,17 @@
+name: "Setup Flutter Version Management CLI"
+description: "Setup the Flutter Version Management CLI, and add it to the PATH"
+branding:
+  icon: "triangle"
+  color: "blue"
+inputs:
+  version:
+    description: "The version to install: Default: latest"
+    required: false
+    default: "latest"
+runs:
+  using: "composite"
+  steps:
+    # Run the action
+    - name: Setup Flutter Version Management CLI
+      run: $GITHUB_ACTION_PATH/action.sh ${{ inputs.version }}
+      shell: bash
