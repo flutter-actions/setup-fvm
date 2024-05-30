@@ -32,15 +32,11 @@ jobs:
           version: ${{ matrix.version }}
 
       - name: Setup Flutter SDK
-        run: echo yes | fvm install stable
-      - name: Dart version
-        run: dart --version
-      - name: Flutter version
-        run: flutter --version
-      - name: Flutter doctor
-        run: flutter doctor
+        run: echo yes | fvm install stable --skip-setup --skip-pub-get
 
-      - name: Run hello world
-        run: |
-          echo "main() { print('hello world'); }" > hello.dart
-          dart hello.dart
+      - run: |
+          cd test
+          echo "Dart SDK version:"
+          dart --version
+          echo "Flutter SDK version:"
+          flutter --version
