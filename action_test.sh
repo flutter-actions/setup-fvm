@@ -1,5 +1,5 @@
 #!/bin/bash
-export ACTION_TEST_DIR="$(pwd)/.setup-flutter"
+export ACTION_TEST_DIR="$(pwd)/.setup-fvm"
 
 # GitHub Context
 export GITHUB_ACTION_PATH="$(pwd)"
