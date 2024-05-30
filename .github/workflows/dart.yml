@@ -32,7 +32,7 @@ jobs:
           version: ${{ matrix.version }}
 
       - name: Setup Flutter SDK
-        run: yes | fvm use stable
+        run: echo yes | fvm install stable
       - name: Dart version
         run: dart --version
       - name: Flutter version
