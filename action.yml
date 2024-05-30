@@ -8,10 +8,6 @@ inputs:
     description: "The version to install: Default: latest"
     required: false
     default: "latest"
-  token:
-    description: "The GitHub token to use for the installation"
-    required: false
-    default: ${{ secrets.GITHUB_TOKEN }}
 runs:
   using: "composite"
   steps:
@@ -19,5 +15,5 @@ runs:
     - name: Setup Flutter Version Management CLI
       shell: bash
       env:
-        GITHUB_TOKEN: ${{ inputs.token }}
+        GITHUB_TOKEN: ${{ github.token }}
       run: $GITHUB_ACTION_PATH/action.sh ${{ inputs.version }}
