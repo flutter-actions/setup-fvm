@@ -3,8 +3,7 @@
 > [!WARNING]
 > Currently, the action only supports Linux and macOS runners.
 
-Setup Flutter Version Management: A simple CLI to manage Flutter SDK versions.  
-https://github.com/leoafarias/fvm
+This [GitHub Action] installs and sets up of a [Flutter Version Management](https://github.com/leoafarias/fvm) by [@leoafarias](https://github.com/leoafarias). An alternative to the [flutter-actions/setup-flutter](https://github.com/flutter-actions/setup-flutter) action.
 
 ## Inputs
 
@@ -39,6 +38,9 @@ jobs:
       - name: Print Flutter SDK version
         run: fvm flutter --version
 ```
+
+> [!WARNING]
+> Do not use both `flutter-actions/setup-flutter` and `flutter-actions/setup-fvm` in the same workflow. It provides the same functionality, so just pick one.
 
 # License
 
