@@ -32,8 +32,6 @@ jobs:
 
       - name: Setup Flutter Version Management CLI
         uses: flutter-actions/setup-fvm@v1
-        with:
-          version: latest
 
       - name: Install Flutter SDK
         run: fvm use stable
