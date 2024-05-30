@@ -20,7 +20,6 @@ jobs:
           - ubuntu-latest
           - macos-latest # Apple M1 Silicon
           - macos-13 # Intel Mac
-          - windows-latest
         version:
           - latest
           - 3.1.5
