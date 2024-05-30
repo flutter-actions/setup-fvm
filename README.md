@@ -35,3 +35,7 @@ jobs:
       - name: Print Flutter SDK version
         run: fvm flutter --version
 ```
+
+# License
+
+Licensed under the [MIT License].
