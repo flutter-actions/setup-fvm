@@ -37,6 +37,6 @@ jobs:
       - run: |
           cd test
           echo "Dart SDK version:"
-          dart --version
+          fvm dart --version
           echo "Flutter SDK version:"
-          flutter --version
+          fvm flutter --version
