@@ -34,7 +34,7 @@ jobs:
         uses: flutter-actions/setup-fvm@v1
 
       - name: Install Flutter SDK
-        run: fvm use stable
+        run: echo yes | fvm use stable
 
       - name: Print Flutter SDK version
         run: fvm flutter --version
