@@ -1,6 +1,11 @@
 [GitHub Action]: https://github.com/flutter-actions/setup-fvm
 [MIT License]: https://github.com/flutter-actions/setup-fvm/blob/main/LICENSE
 
+> [!IMPORTANT]
+> :warning::warning::warning:
+> 
+> This action is not working as expected, I would like to apology for this since I don't have the bandwidth to resolve the issues yet at this time.
+
 # About
 
 > [!WARNING]
