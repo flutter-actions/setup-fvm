@@ -31,7 +31,7 @@ jobs:
           version: ${{ matrix.version }}
 
       - name: Setup Flutter SDK
-        run: echo yes | fvm install stable --skip-pub-get
+        run: echo -e "yes\nyes\n" | fvm install stable --skip-pub-get
 
       - run: |
           cd test
