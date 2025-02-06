@@ -62,7 +62,7 @@ if [[ "$1" == "latest" ]]; then
       error "Failed to fetch latest FVM version."
   fi
 else
-  FVM_VERSION="$1"
+  FVM_VERSION="${FVM_VERSION:-$1}"
 fi
 
 log_message "Installing FVM version $FVM_VERSION."
