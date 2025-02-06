@@ -5,6 +5,7 @@ export ACTION_TEST_DIR="$(pwd)/.setup-fvm"
 export GITHUB_ACTION_PATH="$(pwd)"
 export GITHUB_ENV="$ACTION_TEST_DIR/.GITHUB_ENV"
 export GITHUB_PATH="$ACTION_TEST_DIR/.GITHUB_PATH"
+export GITHUB_TOKEN=$(gh auth token)
 
 # Runner environment variables
 export RUNNER_TOOL_CACHE="$ACTION_TEST_DIR/tool_cache"
