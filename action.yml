@@ -8,6 +8,10 @@ inputs:
     description: "The version to install: Default: latest"
     required: false
     default: "latest"
+  workspace:
+    description: "The working directory to run the action in"
+    required: false
+    default: "{{ github.workspace }}"
 runs:
   using: "composite"
   steps:
@@ -16,4 +20,4 @@ runs:
       shell: bash
       env:
         GITHUB_TOKEN: ${{ github.token }}
-      run: $GITHUB_ACTION_PATH/action.sh ${{ inputs.version }}
+      run: $GITHUB_ACTION_PATH/action.sh ${{ inputs.version }} ${{ inputs.workspace }}

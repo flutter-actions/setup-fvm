@@ -1,10 +1,9 @@
 #!/bin/bash
-set -e
 export FVM_VERSION=${1:-"latest"}
+export FVM_WORKSPACE=${$2:-"${GITHUB_WORKSPACE}"}
 export FVM_CACHE_PATH="${RUNNER_TEMP}/fvm_cache"
 export FVM_GIT_CACHE_PATH="${RUNNER_TEMP}/fvm_git_cache"
-
-FLUTTER_PUB_CACHE="${RUNNER_TEMP}/flutter/pub-cache"
+export FLUTTER_PUB_CACHE="${RUNNER_TEMP}/flutter/pub-cache"
 
 echo "::group::Installing FVM version ${FVM_VERSION}"
 source "${GITHUB_ACTION_PATH}/hacks/install.sh"
@@ -14,20 +13,29 @@ echo "::endgroup::"
 echo "PUB_CACHE=${FLUTTER_PUB_CACHE}" >> $GITHUB_ENV
 mkdir -p $FLUTTER_PUB_CACHE
 
-echo "::group::Setting up FVM environment"
-echo -e "yes\nyes\n" | fvm install
+echo "::group::Setting up FVM workspace"
+if cd ${FVM_WORKSPACE}; then
+	echo "Changed workspace directory to ${FVM_WORKSPACE}"
+else
+	echo "Failed to change workspace directory to ${FVM_WORKSPACE}"
+	exit 1
+fi
 
-# Invoke Flutter SDK to suppress the analytics.
-fvm flutter --version --suppress-analytics 2>&1 >/dev/null
+if [ -f ".fvmrc" ]; then
+	echo "Detected .fvmrc file, using it to install Flutter SDK"
+	echo -e "yes\nyes\n" | fvm install
 
-# Disable Google Analytics and CLI animations
-fvm flutter config --no-analytics 2>&1 >/dev/null
-fvm flutter config --no-cli-animations 2>&1 >/dev/null
+	# Invoke Flutter SDK to suppress the analytics.
+	fvm flutter --version --suppress-analytics 2>&1 >/dev/null
 
-# Report success, and print version.
-echo "Succesfully installed Flutter SDK:"
-echo "------------------------------------------------------------------------------"
-fvm dart --version
-fvm flutter --version
+	# Disable Google Analytics and CLI animations
+	fvm flutter config --no-analytics 2>&1 >/dev/null
+	fvm flutter config --no-cli-animations 2>&1 >/dev/null
 
+	# Report success, and print version.
+	echo "Succesfully installed Flutter SDK:"
+	echo "------------------------------------------------------------------------------"
+	fvm dart --version
+	fvm flutter --version
+fi
 echo "::endgroup::"
