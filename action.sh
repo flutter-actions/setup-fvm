@@ -27,6 +27,7 @@ fvm flutter config --no-cli-animations 2>&1 >/dev/null
 # Report success, and print version.
 echo "Succesfully installed Flutter SDK:"
 echo "------------------------------------------------------------------------------"
+fvm dart --version
 fvm flutter --version
 
 echo "::endgroup::"
