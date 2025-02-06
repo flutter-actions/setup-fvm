@@ -1,6 +1,6 @@
 #!/bin/bash
 export FVM_VERSION=${1:-"latest"}
-export FVM_WORKSPACE=${$2:-"${GITHUB_WORKSPACE}"}
+export FVM_WORKSPACE=${2:-"${GITHUB_WORKSPACE}"}
 export FVM_CACHE_PATH="${RUNNER_TEMP}/fvm_cache"
 export FVM_GIT_CACHE_PATH="${RUNNER_TEMP}/fvm_git_cache"
 export FLUTTER_PUB_CACHE="${RUNNER_TEMP}/flutter/pub-cache"
