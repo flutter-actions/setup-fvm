@@ -8,6 +8,14 @@ FLUTTER_PUB_CACHE="${RUNNER_TEMP}/flutter/pub-cache"
 
 echo "::group::Installing FVM version ${FVM_VERSION}"
 "${GITHUB_ACTION_PATH}/hacks/install.sh" ${FVM_VERSION}
+
+# Loading environment variables from the GitHub context
+if [[ -n "${GITHUB_PATH}" ]]; then
+    if [ -f "${GITHUB_PATH}" ]; then
+        source ${GITHUB_PATH}
+    fi
+fi
+
 echo "::endgroup::"
 
 # Configure pub to use a fixed location.
