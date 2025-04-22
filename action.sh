@@ -17,25 +17,29 @@ echo "::group::Setting up FVM workspace"
 if cd ${FVM_WORKSPACE}; then
 	echo "Changed workspace directory to ${FVM_WORKSPACE}"
 else
-	echo "Failed to change workspace directory to ${FVM_WORKSPACE}"
+	echo "::error::Failed to change workspace directory to ${FVM_WORKSPACE}"
 	exit 1
 fi
 
-if [ -f ".fvmrc" ]; then
-	echo "Detected .fvmrc file, using it to install Flutter SDK"
-	echo -e "yes\nyes\n" | fvm install
-
-	# Invoke Flutter SDK to suppress the analytics.
-	fvm flutter --version --suppress-analytics 2>&1 >/dev/null
-
-	# Disable Google Analytics and CLI animations
-	fvm flutter config --no-analytics 2>&1 >/dev/null
-	fvm flutter config --no-cli-animations 2>&1 >/dev/null
-
-	# Report success, and print version.
-	echo "Succesfully installed Flutter SDK:"
-	echo "------------------------------------------------------------------------------"
-	fvm dart --version
-	fvm flutter --version
+# Check if .fvmrc file exists
+if [ ! -f ".fvmrc" ]; then
+	echo "::error::No .fvmrc file found in the workspace. Please create one to specify the Flutter SDK version."
+	exit 1
 fi
+
+echo "Detected .fvmrc file, using it to install Flutter SDK"
+echo -e "yes\nyes\n" | fvm install
+
+# Invoke Flutter SDK to suppress the analytics.
+fvm flutter --version --suppress-analytics 2>&1 >/dev/null
+
+# Disable Google Analytics and CLI animations
+fvm flutter config --no-analytics 2>&1 >/dev/null
+fvm flutter config --no-cli-animations 2>&1 >/dev/null
+
+# Report success, and print version.
+echo "Succesfully installed Flutter SDK:"
+echo "------------------------------------------------------------------------------"
+fvm dart --version
+fvm flutter --version
 echo "::endgroup::"
